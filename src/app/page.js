@@ -12,7 +12,7 @@ const skills = [
 export default function Home() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-10">
-      <hero
+      <Hero
         nama="Shintya Eka"
         tagline="Siswa kelas XI SMK, calon Junior Web Developer di Kelas Industri UBIG."
       />
