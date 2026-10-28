@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer"; 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,16 +14,20 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Shintya Eka | Portfolio",
-  description: "Portfolio Shintya Eka, siswa SMK calon Junior Web Developer di Kelas Industri UBIG.",
+  description:
+    "Portfolio Shintya Eka, siswa SMK jurusan Rekayasa Perangkat Lunak dan calon Junior Web Developer di Kelas Industri UBIG.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="en"
+      lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-latar text-gray-800">{children}</body>
-    </html>
+      <body className="min-h-full flex flex-col bg-latar text-gray-800">
+        {children}
+        <Footer />
+      </body>
+    </html> 
   );
 }
