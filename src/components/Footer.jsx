@@ -1,8 +1,10 @@
 export default function Footer() {
+    const tahun = new Date().getFullYear();
+
     return (
-        <footer className="mt-auto bg-slate-800 p-4 text-center text-white">
-                &copy; {new Date().getFullYear()} Shintya Eka Ramadhani.
-                dibuat dengan Next.js di Kelas Industri UBIG.           
+        <footer className="mt-auto bg-utama p-6 text-center text-latar">
+                <p>&copy; 2026 Shintya Eka Ramadhani.
+                dibuat dengan Next.js di Kelas Industri UBIG.</p>          
         </footer>
     );
 }
