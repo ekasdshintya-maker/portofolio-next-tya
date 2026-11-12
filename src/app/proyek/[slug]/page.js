@@ -39,21 +39,21 @@ export default async function DetailProyek({ params }) {
             </Link>
             <h1 className="mt-4 text-3xl font-bold text-primary md:text-4xl">{item.judul}</h1>
             <div className="mt-3 flex items-center gap-3">
-                <Badge>{item.kategori}</Badge>
-                <span className="text-muted-foreground">Dibuat di{item.minggu}</span>
+                <Badge>{proyek.kategori}</Badge>
+                <span className="text-muted-foreground">Dibuat di{proyek.minggu}</span>
             </div>
             <Image
-              src={item.gambar_url}
-              alt={`Tangkapan layar ${item.judul}`}
+              src={proyek.gambar_url}
+              alt={`Tangkapan layar ${proyek.judul}`}
               width={640}
               height={420}
               loading="eager"
               className="mt-6 h-auto w-full rounded-xl border border-border"
             />
-            <p className="mt-6 text-lg">{item.deskripsi}</p>
+            <p className="mt-6 text-lg">{proyek.deskripsi}</p>
             <h2 className="text-2xl font-bold text-primary">Yang Saya Pelajari</h2>
             <ul className="mt-3 list-disc pl-5">
-                {item.fitur.map((f) => (
+                {proyek.fitur.map((f) => (
                     <li key={f}>{f}</li>
                 ))}
             </ul>
