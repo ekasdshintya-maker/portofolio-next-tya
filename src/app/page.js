@@ -3,7 +3,8 @@ import Hero from "@/components/Hero";
 import ProyekCard from "@/components/ProyekCard";
 import SkillCard from "@/components/SkillCard";
 import Kartu from "@/components/Kartu";
-import { proyek } from "@/data/proyek";
+import { buttonVariants } from "@/components/ui/button";
+import { supabase } from "@/lib/supabase";
 
 const skills = [
   { nama: "HTML", level: "Menengah" },
@@ -13,9 +14,17 @@ const skills = [
   { nama: "JavaScript", level: "Dasar" },
 ];
 
-const proyekTerbaru = proyek.slice(-3);
+export default async function Home() {
+  const { data: proyekTerbaru, error } = await supabase
+      .from("projects")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(3);
 
-export default function Home() {
+    if (error) {
+      console.error("Gagal mengambil data proyek:", error);
+    }
+
   return (
     <main className="mx-auto max-w-5xl px-4 py-10">
       {/* Profil utama */}
@@ -36,14 +45,15 @@ export default function Home() {
             ))}
           </section>
         </Kartu>
+
         <section className="mt-10">
-          <h2 className="mb-4 text-2xl font-bold text-utama dark:text-cyan-500">Proyek Terbaru</h2>
+          <h2 className="mb-4 text-2xl font-bold text-primary">Proyek Terbaru</h2>
           <div className="grid gap-6 md:grid-cols-3">
             {proyekTerbaru.map((item) => (
               <ProyekCard key={item.slug} proyek={item} />
             ))}
           </div>
-          <Link href="/proyek" className="mt-6 inline-block rounded-lg bg-cyan-900 px-5 py-2 font-semibold text-white">
+          <Link href="/proyek" className={ buttonVariants ({ size: "lg", className: "mt-6"})}>
             Lihat semua Proyek
           </Link>
         </section>
