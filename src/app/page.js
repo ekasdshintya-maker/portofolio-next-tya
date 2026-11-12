@@ -15,7 +15,11 @@ const skills = [
 ];
 
 export default async function Home() {
-  const { data: proyekTerbaru, error } = await supabase
+  const { data: skills } = await supabase
+    .from("skills")
+    .select("*")
+    .order("id")
+  const { data: proyekTerbaru, error} = await supabase
       .from("projects")
       .select("*")
       .order("created_at", { ascending: false })

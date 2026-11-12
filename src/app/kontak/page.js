@@ -1,4 +1,5 @@
 import FormKontak from "@/components/FormKontak";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata  = {
     title: "Kontak",
@@ -14,32 +15,40 @@ export default function Kontak() {
             </p>
 
             <div className="mt-8 grid gap-6 md:grid-cols-3">
-            <section className="rounded-xl border border-border bg-card p-6 shadow-sm md:col-span-2">
-            <FormKontak />
-            </section>
+                <Card className="md:col-span-2">
+                    <CardContent>
+                        <FormKontak />
+                    </CardContent>
+                </Card>
 
             {/* Tentang saya */}
-            <aside className="rounded-lg border border-border bg-card p-4 shadow-sm">
-                <h2 className="font-bold text-utama dark:text-white">
-                    Temukan saya di 
-                </h2>
-                <div className="mt-3 space-y-2 text-sm">
-                    <a
-                        href="https://github.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block text-red-600 hover:underline dark:text-cyan-500"
-                    >
-                        GitHub
-                    </a>
-                    <a
-                        href="mailto:ekasdshintya@gmail.com"
-                        className="block text-red-600 hover:underline dark:text-cyan-500"
-                    >
-                        ekasdshintya@gmail.com
-                    </a>
-                </div>
-            </aside>
+            <Card>
+                <CardHeader>
+                    <CardTitle className="text-2xl font-bold text-primary">
+                        Temukan saya di
+                    </CardTitle>
+                </CardHeader>
+
+                <CardContent>
+                    <ul className="space-y-2">
+                        <li>
+                            <a
+                             href="https://github.com/ekasdshintya"
+                             target="_blank"
+                             className="text-aksen hover:underline">
+                                GitHub
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                              href="mailto:shintyaeka@example.com"
+                              className="text-aksen hover:underline">
+                                ekasdshintya@gmail.com
+                              </a>
+                        </li>
+                    </ul>
+                </CardContent>
+            </Card>
         </div>
     </main>
     );
