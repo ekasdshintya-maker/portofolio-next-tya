@@ -6,22 +6,27 @@ import { Separator } from "@/components/ui/separator";
 import { supabase } from "@/lib/supabase";
 
 async function ambilProyek(slug) {
-    const { data } = await supabase
+    const { data, error } = await supabase
         .from("projects")
         .select("*")
         .eq("slug", slug)
-        .single();
+        .maybeSingle();
+
+    if (error) {
+        console.error("Gagal mengambil proyek:", error.message);
+        return null;
+    }
     return data;
 }
 
 export async function generateMetadata({ params }) {
     const { slug } = await params;
-    const item = await ambilProyek(slug);
+    const proyek = await ambilProyek(slug);
 
-    if (!item) {
+    if (!proyek) {
         return { title: "Proyek tidak ditemukan" };
     }
-    return { title: item.judul, description: item.deskripsi };
+    return { title: proyek.judul, description: proyek.deskripsi };
 }
 
 export default async function DetailProyek({ params }) {
@@ -37,7 +42,7 @@ export default async function DetailProyek({ params }) {
             <Link href="/proyek" className="text-sm font-semibold text-aksen hover:underline">
               &larr; Kembali ke daftar proyek
             </Link>
-            <h1 className="mt-4 text-3xl font-bold text-primary md:text-4xl">{item.judul}</h1>
+            <h1 className="mt-4 text-3xl font-bold text-primary md:text-4xl">{proyek.judul}</h1>
             <div className="mt-3 flex items-center gap-3">
                 <Badge>{proyek.kategori}</Badge>
                 <span className="text-muted-foreground">Dibuat di{proyek.minggu}</span>
@@ -53,8 +58,8 @@ export default async function DetailProyek({ params }) {
             <p className="mt-6 text-lg">{proyek.deskripsi}</p>
             <h2 className="text-2xl font-bold text-primary">Yang Saya Pelajari</h2>
             <ul className="mt-3 list-disc pl-5">
-                {proyek.fitur.map((f) => (
-                    <li key={f}>{f}</li>
+                {(Array.isArray(proyek.fitur) ? proyek.fitur : []).map((f, index) => (
+                    <li key={index}>{f}</li>
                 ))}
             </ul>
         </main>
