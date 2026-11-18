@@ -46,7 +46,7 @@ export default function FilterProyek({ proyek }) {
               placeholder="Contoh: Form Kontak"
               className="mt-1 w-full rounded-lg border border-input bg-card p-2 md:w-80"
             />
-            {kata !== "" && [
+            {kata !== "" && (
                 <Button
                   variant="link"
                   onClick={() => setKata ("")}
@@ -54,7 +54,7 @@ export default function FilterProyek({ proyek }) {
                 >
                     Hapus pencarian
                 </Button>
-            ]}
+            )}
         </div>
         <p className="mt-4 text-sm text-muted-foreground">
             Menampilkan {hasil.length} dari {proyek.length} proyek
