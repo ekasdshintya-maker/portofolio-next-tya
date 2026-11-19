@@ -21,7 +21,7 @@ export default function ProyekCard({ proyek }) {
     <CardHeader>
       <CardTitle className="text-lg text-primary">{proyek.judul}</CardTitle>
       <CardDescription>{proyek.deskripsi}</CardDescription>
-      <Badge variant={proyek.kategori.toLowerCase()}>
+      <Badge className="bg-[#172554] text-white hover:bg-[#172554]">
         {proyek.kategori}
       </Badge>
     </CardHeader>

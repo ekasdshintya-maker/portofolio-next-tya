@@ -4,7 +4,7 @@ import { useState } from "react";
 import ProyekCard from "./ProyekCard";
 import { Button } from "@/components/ui/button";
 
-const daftarKategori = ["Semua", "HTML", "CSS", "JavaScript"];
+const daftarKategori = ["Semua", "HTML", "CSS", "JavaScript", "Next.js"];
 const tombolBiasa = "rounded-full border border-utama px-4 py-1 text-sm font-semibold text-utama dark:border-gray-400 dark:text-gray-200";
 const tombolAktif = "rounded-full border border-aksen bg-aksen px-4 py-1 text-sm font-semibold text-white";
 
